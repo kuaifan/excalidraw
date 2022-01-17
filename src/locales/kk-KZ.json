@@ -102,9 +102,7 @@
     "showBackground": "",
     "toggleTheme": "",
     "personalLib": "",
-    "excalidrawLib": "",
-    "decreaseFontSize": "",
-    "increaseFontSize": ""
+    "excalidrawLib": ""
   },
   "buttons": {
     "clearReset": "",
@@ -117,6 +115,7 @@
     "copyPngToClipboard": "",
     "scale": "",
     "save": "",
+    "saveContent": "",
     "saveAs": "",
     "load": "",
     "getShareableLink": "",
@@ -209,9 +208,7 @@
     "lineEditor_pointSelected": "",
     "lineEditor_nothingSelected": "",
     "placeImage": "",
-    "publishLibrary": "",
-    "bindTextToElement": "",
-    "deepBoxSelect": ""
+    "publishLibrary": ""
   },
   "canvasError": {
     "cannotShowPreview": "",
@@ -258,8 +255,6 @@
   "helpDialog": {
     "blog": "Біздің блогты оқу",
     "click": "шерту",
-    "deepSelect": "",
-    "deepBoxSelect": "",
     "curvedArrow": "Майысқан нұсқар",
     "curvedLine": "Майысқан сызық",
     "documentation": "Құжаттама",

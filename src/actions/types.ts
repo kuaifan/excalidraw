@@ -75,6 +75,7 @@ export type ActionName =
   | "deleteSelectedElements"
   | "changeViewBackgroundColor"
   | "clearCanvas"
+  | "contentSave"
   | "zoomIn"
   | "zoomOut"
   | "resetZoom"
@@ -101,9 +102,7 @@ export type ActionName =
   | "flipVertical"
   | "viewMode"
   | "exportWithDarkMode"
-  | "toggleTheme"
-  | "increaseFontSize"
-  | "decreaseFontSize";
+  | "toggleTheme";
 
 export type PanelComponentProps = {
   elements: readonly ExcalidrawElement[];

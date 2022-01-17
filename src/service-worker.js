@@ -17,10 +17,10 @@
  * See https://goo.gl/2aRDsh
  */
 
-importScripts("/workbox/workbox-sw.js");
+importScripts("./workbox/workbox-sw.js");
 
 workbox.setConfig({
-  modulePathPrefix: "/workbox/",
+  modulePathPrefix: "./workbox/",
 });
 
 self.addEventListener("message", (event) => {

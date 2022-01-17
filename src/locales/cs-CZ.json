@@ -102,9 +102,7 @@
     "showBackground": "",
     "toggleTheme": "Přepnout tmavý řežim",
     "personalLib": "",
-    "excalidrawLib": "",
-    "decreaseFontSize": "",
-    "increaseFontSize": ""
+    "excalidrawLib": ""
   },
   "buttons": {
     "clearReset": "",
@@ -117,6 +115,7 @@
     "copyPngToClipboard": "Kopírovat PNG do schránky",
     "scale": "Měřítko",
     "save": "",
+    "saveContent": "",
     "saveAs": "Uložit jako",
     "load": "Nahrát",
     "getShareableLink": "Získat odkaz pro sdílení",
@@ -209,9 +208,7 @@
     "lineEditor_pointSelected": "",
     "lineEditor_nothingSelected": "",
     "placeImage": "",
-    "publishLibrary": "",
-    "bindTextToElement": "",
-    "deepBoxSelect": ""
+    "publishLibrary": ""
   },
   "canvasError": {
     "cannotShowPreview": "",
@@ -258,8 +255,6 @@
   "helpDialog": {
     "blog": "",
     "click": "kliknutí",
-    "deepSelect": "",
-    "deepBoxSelect": "",
     "curvedArrow": "",
     "curvedLine": "",
     "documentation": "",

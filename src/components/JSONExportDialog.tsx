@@ -106,30 +106,6 @@ export const JSONExportDialog = ({
 
   return (
     <>
-      <ToolButton
-        onClick={() => {
-          setModalIsShown(true);
-        }}
-        data-testid="json-export-button"
-        icon={exportFile}
-        type="button"
-        aria-label={t("buttons.export")}
-        showAriaLabel={useIsMobile()}
-        title={t("buttons.export")}
-      />
-      {modalIsShown && (
-        <Dialog onCloseRequest={handleClose} title={t("buttons.export")}>
-          <JSONExportModal
-            elements={elements}
-            appState={appState}
-            files={files}
-            actionManager={actionManager}
-            onCloseRequest={handleClose}
-            exportOpts={exportOpts}
-            canvas={canvas}
-          />
-        </Dialog>
-      )}
     </>
   );
 };

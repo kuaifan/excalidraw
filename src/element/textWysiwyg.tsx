@@ -3,25 +3,22 @@ import {
   isWritableElement,
   getFontString,
   getFontFamilyString,
-  isTestEnv,
 } from "../utils";
 import Scene from "../scene/Scene";
 import { isBoundToContainer, isTextElement } from "./typeChecks";
 import { CLASSES, BOUND_TEXT_PADDING } from "../constants";
-import { ExcalidrawElement, ExcalidrawTextElement } from "./types";
+import {
+  ExcalidrawBindableElement,
+  ExcalidrawElement,
+  ExcalidrawTextElement,
+} from "./types";
 import { AppState } from "../types";
 import { mutateElement } from "./mutateElement";
 import {
   getApproxLineHeight,
   getBoundTextElementId,
-  getContainerElement,
   wrapText,
 } from "./textElement";
-import {
-  actionDecreaseFontSize,
-  actionIncreaseFontSize,
-} from "../actions/actionProperties";
-import App from "../components/App";
 
 const normalizeText = (text: string) => {
   return (
@@ -65,7 +62,6 @@ export const textWysiwyg = ({
   element,
   canvas,
   excalidrawContainer,
-  app,
 }: {
   id: ExcalidrawElement["id"];
   appState: AppState;
@@ -76,10 +72,9 @@ export const textWysiwyg = ({
     originalText: string;
   }) => void;
   getViewportCoords: (x: number, y: number) => [number, number];
-  element: ExcalidrawTextElement;
+  element: ExcalidrawElement;
   canvas: HTMLCanvasElement | null;
   excalidrawContainer: HTMLDivElement | null;
-  app: App;
 }) => {
   const textPropertiesUpdated = (
     updatedElement: ExcalidrawTextElement,
@@ -98,15 +93,18 @@ export const textWysiwyg = ({
     return false;
   };
   let originalContainerHeight: number;
-  let approxLineHeight = getApproxLineHeight(getFontString(element));
+  let approxLineHeight = isTextElement(element)
+    ? getApproxLineHeight(getFontString(element))
+    : 0;
 
-  const initialText = element.originalText;
   const updateWysiwygStyle = () => {
     const updatedElement = Scene.getScene(element)?.getElement(id);
     if (updatedElement && isTextElement(updatedElement)) {
       let coordX = updatedElement.x;
       let coordY = updatedElement.y;
-      const container = getContainerElement(updatedElement);
+      const container = updatedElement?.containerId
+        ? Scene.getScene(updatedElement)!.getElement(updatedElement.containerId)
+        : null;
       let maxWidth = updatedElement.width;
 
       let maxHeight = updatedElement.height;
@@ -125,7 +123,9 @@ export const textWysiwyg = ({
           height = editorHeight;
         }
         if (propertiesUpdated) {
-          approxLineHeight = getApproxLineHeight(getFontString(updatedElement));
+          approxLineHeight = isTextElement(updatedElement)
+            ? getApproxLineHeight(getFontString(updatedElement))
+            : 0;
 
           originalContainerHeight = container.height;
 
@@ -163,8 +163,9 @@ export const textWysiwyg = ({
         }
       }
       const [viewportX, viewportY] = getViewportCoords(coordX, coordY);
-      const { textAlign } = updatedElement;
-      editable.value = updatedElement.originalText;
+      const { textAlign, angle } = updatedElement;
+
+      editable.value = updatedElement.originalText || updatedElement.text;
       const lines = updatedElement.originalText.split("\n");
       const lineHeight = updatedElement.containerId
         ? approxLineHeight
@@ -193,7 +194,6 @@ export const textWysiwyg = ({
             ? ((appState.zoom.value * 100 - 100) / 10) * 14
             : 0)) /
         appState.zoom.value;
-      const angle = container ? container.angle : updatedElement.angle;
       Object.assign(editable.style, {
         font: getFontString(updatedElement),
         // must be defined *after* font ¯\_(ツ)_/¯
@@ -217,11 +217,6 @@ export const textWysiwyg = ({
         maxWidth: `${maxWidth}px`,
         maxHeight: `${editorMaxHeight}px`,
       });
-      // For some reason updating font attribute doesn't set font family
-      // hence updating font family explicitly for test environment
-      if (isTestEnv()) {
-        editable.style.fontFamily = getFontFamilyString(updatedElement);
-      }
     }
   };
 
@@ -276,7 +271,9 @@ export const textWysiwyg = ({
         let height = "auto";
 
         if (lines === 2) {
-          const container = getContainerElement(element);
+          const container = Scene.getScene(element)!.getElement(
+            element.containerId,
+          );
           const actualLineCount = wrapText(
             editable.value,
             getFontString(element),
@@ -301,12 +298,7 @@ export const textWysiwyg = ({
 
   editable.onkeydown = (event) => {
     event.stopPropagation();
-
-    if (actionDecreaseFontSize.keyTest(event)) {
-      app.actionManager.executeAction(actionDecreaseFontSize);
-    } else if (actionIncreaseFontSize.keyTest(event)) {
-      app.actionManager.executeAction(actionIncreaseFontSize);
-    } else if (event.key === KEYS.ESCAPE) {
+    if (event.key === KEYS.ESCAPE) {
       event.preventDefault();
       submittedViaKeyboard = true;
       handleSubmit();
@@ -448,7 +440,9 @@ export const textWysiwyg = ({
     }
     let wrappedText = "";
     if (isTextElement(updateElement) && updateElement?.containerId) {
-      const container = getContainerElement(updateElement);
+      const container = Scene.getScene(updateElement)!.getElement(
+        updateElement.containerId,
+      ) as ExcalidrawBindableElement;
 
       if (container) {
         wrappedText = wrapText(
@@ -456,23 +450,17 @@ export const textWysiwyg = ({
           getFontString(updateElement),
           container.width,
         );
-
-        if (updateElement.containerId) {
+        if (isTextElement(updateElement) && updateElement.containerId) {
           const editorHeight = Number(editable.style.height.slice(0, -2));
           if (editable.value) {
-            // Don't mutate if text is not updated
-            if (initialText !== editable.value) {
-              mutateElement(updateElement, {
-                // vertically center align
-                y: container.y + container.height / 2 - editorHeight / 2,
-                height: editorHeight,
-                width: Number(editable.style.width.slice(0, -2)),
-                // preserve padding
-                x: container.x + BOUND_TEXT_PADDING,
-                angle: container.angle,
-              });
-            }
-
+            mutateElement(updateElement, {
+              // vertically center align
+              y: container.y + container.height / 2 - editorHeight / 2,
+              height: editorHeight,
+              width: Number(editable.style.width.slice(0, -2)),
+              // preserve padding
+              x: container.x + BOUND_TEXT_PADDING,
+            });
             const boundTextElementId = getBoundTextElementId(container);
             if (!boundTextElementId || boundTextElementId !== element.id) {
               mutateElement(container, {

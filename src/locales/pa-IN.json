@@ -35,7 +35,7 @@
     "arrowhead_arrow": "ਤੀਰ",
     "arrowhead_bar": "ਡੰਡੀ",
     "arrowhead_dot": "ਬਿੰਦੀ",
-    "arrowhead_triangle": "ਤਿਕੋਣ",
+    "arrowhead_triangle": "",
     "fontSize": "ਫੌਂਟ ਅਕਾਰ",
     "fontFamily": "ਫੌਂਟ ਪਰਿਵਾਰ",
     "onlySelected": "ਸਿਰਫ ਚੁਣੇ ਹੋਏ ਹੀ",
@@ -101,10 +101,8 @@
     "showStroke": "ਰੇਖਾ ਦਾ ਰੰਗ ਚੋਣਕਾਰ ਦਿਖਾਓ",
     "showBackground": "ਬੈਕਗਰਾਉਂਡ ਦਾ ਰੰਗ ਚੋਣਕਾਰ ਦਿਖਾਓ",
     "toggleTheme": "ਥੀਮ ਬਦਲੋ",
-    "personalLib": "ਨਿੱਜੀ ਲਾਇਬ੍ਰੇਰੀ",
-    "excalidrawLib": "ਐਕਸਕਲੀਡਰਾਅ ਲਾਇਬ੍ਰੇਰੀ",
-    "decreaseFontSize": "",
-    "increaseFontSize": ""
+    "personalLib": "",
+    "excalidrawLib": ""
   },
   "buttons": {
     "clearReset": "ਕੈਨਵਸ ਰੀਸੈੱਟ ਕਰੋ",
@@ -117,6 +115,7 @@
     "copyPngToClipboard": "PNG ਨੂੰ ਕਲਿੱਪਬੋਰਡ 'ਤੇ ਕਾਪੀ ਕਰੋ",
     "scale": "ਪੈਮਾਇਸ਼",
     "save": "ਮੌਜੂਦਾ ਫਾਈਲ ਵਿੱਚ ਸਾਂਭੋ",
+    "saveContent": "",
     "saveAs": "ਇਸ ਵਜੋਂ ਸਾਂਭੋ",
     "load": "ਲੋਡ ਕਰੋ",
     "getShareableLink": "ਸਾਂਝੀ ਕਰਨ ਵਾਲੀ ਲਿੰਕ ਲਵੋ",
@@ -138,12 +137,12 @@
     "lightMode": "ਲਾਇਟ ਮੋਡ",
     "zenMode": "ਜ਼ੈੱਨ ਮੋਡ",
     "exitZenMode": "ਜ਼ੈੱਨ ਮੋਡ 'ਚੋਂ ਬਾਹਰ ਨਿਕਲੋ",
-    "cancel": "ਰੱਦ ਕਰੋ",
-    "clear": "ਸਾਫ਼ ਕਰੋ",
-    "remove": "ਹਟਾਓ",
-    "publishLibrary": "ਪ੍ਰਕਾਸ਼ਤ ਕਰੋ",
-    "submit": "ਜਮ੍ਹਾ ਕਰਵਾਓ",
-    "confirm": "ਪੁਸ਼ਟੀ ਕਰੋ"
+    "cancel": "",
+    "clear": "",
+    "remove": "",
+    "publishLibrary": "",
+    "submit": "",
+    "confirm": ""
   },
   "alerts": {
     "clearReset": "ਇਹ ਸਾਰਾ ਕੈਨਵਸ ਸਾਫ ਕਰ ਦੇਵੇਗਾ। ਕੀ ਤੁਸੀਂ ਪੱਕਾ ਇੰਝ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?",
@@ -173,11 +172,11 @@
     "imageInsertError": "",
     "fileTooBig": "",
     "svgImageInsertError": "",
-    "invalidSVGString": "SVG ਨਜਾਇਜ਼ ਹੈ।"
+    "invalidSVGString": ""
   },
   "toolBar": {
     "selection": "ਚੋਣਕਾਰ",
-    "image": "ਤਸਵੀਰ ਸ਼ਾਮਲ ਕਰੋ",
+    "image": "",
     "rectangle": "ਆਇਤ",
     "diamond": "ਹੀਰਾ",
     "ellipse": "ਅੰਡਾਕਾਰ",
@@ -206,12 +205,10 @@
     "resizeImage": "",
     "rotate": "ਤੁਸੀਂ ਘੁਮਾਉਂਦੇ ਹੋਏ SHIFT ਦਬਾਈ ਰੱਖ ਕੇ ਕੋਣਾਂ ਨੂੰ ਕਾਬੂ ਕਰ ਸਕਦੇ ਹੋ",
     "lineEditor_info": "ਬਿੰਦੂਆਂ ਨੂੰ ਸੋਧਣ ਲਈ ਡਬਲ-ਕਲਿੱਕ ਜਾਂ ਐਂਟਰ ਦਬਾਓ",
-    "lineEditor_pointSelected": "",
-    "lineEditor_nothingSelected": "",
+    "lineEditor_pointSelected": "ਬਿੰਦੀ ਹਟਾਉਣ ਲਈ ਡਲੀਟ ਦਬਾਓ, ਡੁਪਲੀਕੇਟ ਬਣਾਉਣ ਲਈ CtrlOrCmd+D, ਜਾਂ ਹਿਲਾਉਣ ਲਈ ਘਸੀਟੋ",
+    "lineEditor_nothingSelected": "ਹਿਲਾਉਣ ਜਾਂ ਹਟਾਉਣ ਲਈ ਬਿੰਦੂ ਚੁਣੋ, ਜਾਂ ਨਵਾਂ ਬਿੰਦੂ ਜੋੜਨ ਲਈ Alt ਦਬਾਕੇ ਕਲਿੱਕ ਕਰੋ",
     "placeImage": "",
-    "publishLibrary": "",
-    "bindTextToElement": "",
-    "deepBoxSelect": ""
+    "publishLibrary": ""
   },
   "canvasError": {
     "cannotShowPreview": "ਝਲਕ ਨਹੀਂ ਦਿਖਾ ਸਕਦੇ",
@@ -258,8 +255,6 @@
   "helpDialog": {
     "blog": "ਸਾਡਾ ਬਲੌਗ ਪੜ੍ਹੋ",
     "click": "ਕਲਿੱਕ",
-    "deepSelect": "",
-    "deepBoxSelect": "",
     "curvedArrow": "ਵਿੰਗਾ ਤੀਰ",
     "curvedLine": "ਵਿੰਗੀ ਲਕੀਰ",
     "documentation": "ਕਾਗਜ਼ਾਤ",
@@ -281,13 +276,13 @@
     "zoomToSelection": "ਚੋਣ ਤੱਕ ਜ਼ੂਮ ਕਰੋ"
   },
   "clearCanvasDialog": {
-    "title": "ਕੈਨਵਸ ਨੂੰ ਸਾਫ਼ ਕਰੋ"
+    "title": ""
   },
   "publishDialog": {
-    "title": "ਲਾਇਬ੍ਰੇਰੀ ਨੂੰ ਪ੍ਰਕਾਸ਼ਤ ਕਰੋ",
+    "title": "",
     "itemName": "",
-    "authorName": "ਲੇਖਕ ਦਾ ਨਾਂ",
-    "githubUsername": "ਗਿੱਟਹੱਬ ਵਰਤੋਂਕਾਰ ਨਾਂ",
+    "authorName": "",
+    "githubUsername": "",
     "twitterUsername": "",
     "libraryName": "",
     "libraryDesc": "",
@@ -301,8 +296,8 @@
       "website": ""
     },
     "errors": {
-      "required": "ਲੋੜੀਂਦਾ",
-      "website": "ਜਾਇਜ਼ URL ਭਰੋ"
+      "required": "",
+      "website": ""
     },
     "noteDescription": {
       "pre": "",
@@ -311,12 +306,12 @@
     },
     "noteGuidelines": {
       "pre": "",
-      "link": "ਦਿਸ਼ਾ ਨਿਰਦੇਸ਼",
+      "link": "",
       "post": ""
     },
     "noteLicense": {
       "pre": "",
-      "link": "MIT ਲਾਇਸੈਂਸ, ",
+      "link": "",
       "post": ""
     },
     "noteItems": "",
@@ -325,11 +320,11 @@
   "publishSuccessDialog": {
     "title": "",
     "content": "",
-    "link": "ਇੱਥੇ"
+    "link": ""
   },
   "confirmDialog": {
-    "resetLibrary": "ਲਾਇਬ੍ਰੇਰੀ ਰੀਸੈੱਟ ਕਰੋ",
-    "removeItemsFromLib": "ਲਾਇਬ੍ਰੇਰੀ ਵਿੱਚੋਂ ਚੁਣੀਆਂ ਹੋਈਆਂ ਆਈਟਮਾਂ ਹਟਾਓ"
+    "resetLibrary": "",
+    "removeItemsFromLib": ""
   },
   "encrypted": {
     "tooltip": "ਤੁਹਾਡੀ ਡਰਾਇੰਗਾਂ ਸਿਰੇ-ਤੋਂ-ਸਿਰੇ ਤੱਕ ਇਨਕਰਿਪਟ ਕੀਤੀਆਂ ਹੋਈਆਂ ਹਨ, ਇਸ ਲਈ Excalidraw ਦੇ ਸਰਵਰ ਉਹਨਾਂ ਨੂੰ ਕਦੇ ਵੀ ਨਹੀਂ ਦੇਖਣਗੇ।",
@@ -351,7 +346,7 @@
     "width": "ਚੌੜਾਈ"
   },
   "toast": {
-    "addedToLibrary": "ਲਾਇਬ੍ਰੇਰੀ ਵਿੱਚ ਜੋੜਿਆ",
+    "addedToLibrary": "",
     "copyStyles": "ਕਾਪੀ ਕੀਤੇ ਸਟਾਇਲ।",
     "copyToClipboard": "ਕਲਿੱਪਬੋਰਡ 'ਤੇ ਕਾਪੀ ਕੀਤਾ।",
     "copyToClipboardAsPng": "{{exportSelection}} ਨੂੰ ਕਲਿੱਪਬੋਰਡ 'ਤੇ PNG ਵਜੋਂ ਕਾਪੀ ਕੀਤਾ ({{exportColorScheme}})",

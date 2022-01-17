@@ -102,9 +102,7 @@
     "showBackground": "",
     "toggleTheme": "",
     "personalLib": "",
-    "excalidrawLib": "",
-    "decreaseFontSize": "",
-    "increaseFontSize": ""
+    "excalidrawLib": ""
   },
   "buttons": {
     "clearReset": "Vászon törlése",
@@ -117,6 +115,7 @@
     "copyPngToClipboard": "PNG másolása a vágólapra",
     "scale": "Nagyítás",
     "save": "",
+    "saveContent": "",
     "saveAs": "Mentés másként",
     "load": "Betöltés",
     "getShareableLink": "Megosztható link létrehozása",
@@ -206,12 +205,10 @@
     "resizeImage": "",
     "rotate": "A SHIFT billentyű lenyomva tartásával korlátozhatja a szögek illesztését",
     "lineEditor_info": "Kattints duplán, vagy nyomj entert a pontok szerkesztéséhez",
-    "lineEditor_pointSelected": "",
-    "lineEditor_nothingSelected": "",
+    "lineEditor_pointSelected": "Nyomd meg a delete gombot a pont eltávolításához, Ctrl vagy Cmd + D-t a duplikáláshoz, vagy húzva mozgasd",
+    "lineEditor_nothingSelected": "Válassz ki egy pontot a mozgatáshoz vagy törtléshez, vagy az Alt lenyomása mellett kattintva hozz létre új pontokat",
     "placeImage": "",
-    "publishLibrary": "",
-    "bindTextToElement": "",
-    "deepBoxSelect": ""
+    "publishLibrary": ""
   },
   "canvasError": {
     "cannotShowPreview": "Előnézet nem jeleníthető meg",
@@ -258,8 +255,6 @@
   "helpDialog": {
     "blog": "",
     "click": "",
-    "deepSelect": "",
-    "deepBoxSelect": "",
     "curvedArrow": "",
     "curvedLine": "",
     "documentation": "",

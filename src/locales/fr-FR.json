@@ -102,9 +102,7 @@
     "showBackground": "Afficher le sélecteur de couleur d'arrière-plan",
     "toggleTheme": "Changer le thème",
     "personalLib": "Bibliothèque personnelle",
-    "excalidrawLib": "Bibliothèque Excalidraw",
-    "decreaseFontSize": "Réduire la taille de police",
-    "increaseFontSize": "Augmenter la taille de police"
+    "excalidrawLib": "Bibliothèque Excalidraw"
   },
   "buttons": {
     "clearReset": "Réinitialiser le canevas",
@@ -117,6 +115,7 @@
     "copyPngToClipboard": "Copier le PNG dans le presse-papier",
     "scale": "Échelle",
     "save": "Enregistrer dans le fichier actuel",
+    "saveContent": "",
     "saveAs": "Enregistrer sous",
     "load": "Ouvrir",
     "getShareableLink": "Obtenir un lien de partage",
@@ -206,12 +205,10 @@
     "resizeImage": "Vous pouvez redimensionner librement en maintenant SHIFT,\nmaintenez ALT pour redimensionner depuis le centre",
     "rotate": "Vous pouvez restreindre les angles en maintenant MAJ pendant la rotation",
     "lineEditor_info": "Double-cliquez ou appuyez sur Entrée pour éditer les points",
-    "lineEditor_pointSelected": "Appuyer sur Suppr. pour supprimer des points, Ctrl ou Cmd+D pour dupliquer, ou faire glisser pour déplacer",
-    "lineEditor_nothingSelected": "Sélectionner un point pour éditer (maintenir la touche MAJ pour en sélectionner plusieurs),\nou maintenir la touche Alt enfoncée et cliquer pour ajouter de nouveaux points",
+    "lineEditor_pointSelected": "Appuyez sur Supprimer pour supprimer le point, Ctrl ou Cmd+D pour le dupliquer, ou faites-le glisser pour le déplacer",
+    "lineEditor_nothingSelected": "Sélectionnez un point à déplacer ou supprimer, ou maintenez Alt et cliquez pour ajouter de nouveaux points",
     "placeImage": "Cliquez pour placer l'image, ou cliquez et faites glisser pour définir sa taille manuellement",
-    "publishLibrary": "Publier votre propre bibliothèque",
-    "bindTextToElement": "Appuyer sur Entrée pour ajouter du texte",
-    "deepBoxSelect": "Maintenir CtrlOuCmd pour sélectionner dans les groupes, et empêcher le déplacement"
+    "publishLibrary": "Publier votre propre bibliothèque"
   },
   "canvasError": {
     "cannotShowPreview": "Impossible d’afficher l’aperçu",
@@ -258,8 +255,6 @@
   "helpDialog": {
     "blog": "Lire notre blog",
     "click": "clic",
-    "deepSelect": "Sélection dans les groupes",
-    "deepBoxSelect": "Sélectionner dans les groupes, et empêcher le déplacement",
     "curvedArrow": "Flèche courbée",
     "curvedLine": "Ligne courbée",
     "documentation": "Documentation",

@@ -102,9 +102,7 @@
     "showBackground": "Toon achtergrondkleur kiezer",
     "toggleTheme": "Thema aan/uit",
     "personalLib": "Persoonlijke bibliotheek",
-    "excalidrawLib": "Excalidraw bibliotheek",
-    "decreaseFontSize": "",
-    "increaseFontSize": ""
+    "excalidrawLib": "Excalidraw bibliotheek"
   },
   "buttons": {
     "clearReset": "Canvas opnieuw instellen",
@@ -117,6 +115,7 @@
     "copyPngToClipboard": "Kopieer als PNG",
     "scale": "Schaal",
     "save": "Opslaan naar huidige bestand",
+    "saveContent": "",
     "saveAs": "Opslaan als",
     "load": "Open",
     "getShareableLink": "Maak een deelbare link",
@@ -206,12 +205,10 @@
     "resizeImage": "",
     "rotate": "Je kan hoeken beperken door SHIFT ingedrukt te houden wanneer je draait",
     "lineEditor_info": "Dubbelklik of druk op Enter om punten te bewerken",
-    "lineEditor_pointSelected": "",
-    "lineEditor_nothingSelected": "",
+    "lineEditor_pointSelected": "Druk op Delete om een punt te verwijderen, op CtrlOrCmd+D om te kopiëren, of sleeg om te verplaatsen",
+    "lineEditor_nothingSelected": "Selecteer een punt om te verplaatsen of te verwijderen, of houd Alt ingedrukt en klik om nieuwe punten toe te voegen",
     "placeImage": "",
-    "publishLibrary": "Publiceer je eigen bibliotheek",
-    "bindTextToElement": "",
-    "deepBoxSelect": ""
+    "publishLibrary": "Publiceer je eigen bibliotheek"
   },
   "canvasError": {
     "cannotShowPreview": "Kan voorbeeld niet tonen",
@@ -258,8 +255,6 @@
   "helpDialog": {
     "blog": "Lees onze blog",
     "click": "klik",
-    "deepSelect": "",
-    "deepBoxSelect": "",
     "curvedArrow": "Gebogen pijl",
     "curvedLine": "Kromme lijn",
     "documentation": "Documentatie",

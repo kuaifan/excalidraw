@@ -80,7 +80,7 @@ export const SHAPES = [
       </svg>
     ),
     value: "freedraw",
-    key: [KEYS.X, KEYS.P.toUpperCase()],
+    key: KEYS.X,
   },
   {
     icon: (

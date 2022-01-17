@@ -197,6 +197,7 @@ const LayerUI = ({
         <Stack.Col gap={4}>
           <Stack.Row gap={1} justifyContent="space-between">
             {actionManager.renderAction("clearCanvas")}
+            {actionManager.renderAction("contentSave")}
             <Separator />
             {actionManager.renderAction("loadScene")}
             {renderJSONExportDialog()}

@@ -236,18 +236,6 @@ export const actionLoadScene = register({
       };
     }
   },
-  keyTest: (event) => event[KEYS.CTRL_OR_CMD] && event.key === KEYS.O,
-  PanelComponent: ({ updateData, appState }) => (
-    <ToolButton
-      type="button"
-      icon={load}
-      title={t("buttons.load")}
-      aria-label={t("buttons.load")}
-      showAriaLabel={useIsMobile()}
-      onClick={updateData}
-      data-testid="load-button"
-    />
-  ),
 });
 
 export const actionExportWithDarkMode = register({

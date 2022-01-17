@@ -3,7 +3,6 @@ import {
   ExcalidrawBindableElement,
   ExcalidrawElement,
   ExcalidrawTextElement,
-  ExcalidrawTextElementWithContainer,
   FontString,
   NonDeletedExcalidrawElement,
 } from "./types";
@@ -12,6 +11,7 @@ import { BOUND_TEXT_PADDING } from "../constants";
 import { MaybeTransformHandleType } from "./transformHandles";
 import Scene from "../scene/Scene";
 import { AppState } from "../types";
+import { isTextElement } from ".";
 
 export const redrawTextBoundingBox = (
   element: ExcalidrawTextElement,
@@ -21,9 +21,11 @@ export const redrawTextBoundingBox = (
   const maxWidth = container
     ? container.width - BOUND_TEXT_PADDING * 2
     : undefined;
-  let text = element.text;
+  let text = element.originalText;
 
-  if (container) {
+  // Call wrapText only when updating text properties
+  // By clicking on the container
+  if (container && !isTextElement(appState.editingElement)) {
     text = wrapText(
       element.originalText,
       getFontString(element),
@@ -110,12 +112,20 @@ export const handleBindTextResize = (
         let containerHeight = element.height;
         let nextBaseLine = textElement.baseline;
         if (transformHandleType !== "n" && transformHandleType !== "s") {
+          let minCharWidthTillNow = 0;
           if (text) {
-            text = wrapText(
-              textElement.originalText,
-              getFontString(textElement),
-              element.width,
+            minCharWidthTillNow = getMinCharWidth(getFontString(textElement));
+            // check if the diff has exceeded min char width needed
+            const diff = Math.abs(
+              element.width - textElement.width + BOUND_TEXT_PADDING * 2,
             );
+            if (diff >= minCharWidthTillNow) {
+              text = wrapText(
+                textElement.originalText,
+                getFontString(textElement),
+                element.width,
+              );
+            }
           }
 
           const dimensions = measureText(
@@ -252,7 +262,7 @@ export const wrapText = (
         const currentWordWidth = getTextWidth(words[index], font);
 
         // Start breaking longer words exceeding max width
-        if (currentWordWidth >= maxWidth) {
+        if (currentWordWidth > maxWidth) {
           // push current line since the current word exceeds the max width
           // so will be appended in next line
           if (currentLine) {
@@ -283,7 +293,7 @@ export const wrapText = (
             }
           }
           // push current line if appending space exceeds max width
-          if (currentLineWidthTillNow + spaceWidth >= maxWidth) {
+          if (currentLineWidthTillNow + spaceWidth > maxWidth) {
             lines.push(currentLine);
             currentLine = "";
             currentLineWidthTillNow = 0;
@@ -311,15 +321,8 @@ export const wrapText = (
             }
             index++;
             currentLine += `${word} `;
-
-            // Push the word if appending space exceeds max width
-            if (currentLineWidthTillNow + spaceWidth >= maxWidth) {
-              lines.push(currentLine.slice(0, -1));
-              currentLine = "";
-              currentLineWidthTillNow = 0;
-              break;
-            }
           }
+
           if (currentLineWidthTillNow === maxWidth) {
             currentLine = "";
             currentLineWidthTillNow = 0;
@@ -362,14 +365,10 @@ export const charWidth = (() => {
   };
 })();
 export const getApproxMinLineWidth = (font: FontString) => {
-  const minCharWidth = getMinCharWidth(font);
-  if (minCharWidth === 0) {
-    return (
-      measureText(DUMMY_TEXT.split("").join("\n"), font).width +
-      BOUND_TEXT_PADDING * 2
-    );
-  }
-  return minCharWidth + BOUND_TEXT_PADDING * 2;
+  return (
+    measureText(DUMMY_TEXT.split("").join("\n"), font).width +
+    BOUND_TEXT_PADDING * 2
+  );
 };
 
 export const getApproxMinLineHeight = (font: FontString) => {
@@ -412,33 +411,4 @@ export const getApproxCharsToFitInWidth = (font: FontString, width: number) => {
 
 export const getBoundTextElementId = (container: ExcalidrawElement | null) => {
   return container?.boundElements?.filter((ele) => ele.type === "text")[0]?.id;
-};
-
-export const getBoundTextElement = (element: ExcalidrawElement | null) => {
-  if (!element) {
-    return null;
-  }
-  const boundTextElementId = getBoundTextElementId(element);
-  if (boundTextElementId) {
-    return (
-      (Scene.getScene(element)?.getElement(
-        boundTextElementId,
-      ) as ExcalidrawTextElementWithContainer) || null
-    );
-  }
-  return null;
-};
-
-export const getContainerElement = (
-  element:
-    | (ExcalidrawElement & { containerId: ExcalidrawElement["id"] | null })
-    | null,
-) => {
-  if (!element) {
-    return null;
-  }
-  if (element.containerId) {
-    return Scene.getScene(element)?.getElement(element.containerId) || null;
-  }
-  return null;
 };

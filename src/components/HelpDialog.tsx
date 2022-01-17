@@ -6,32 +6,7 @@ import { getShortcutKey } from "../utils";
 import "./HelpDialog.scss";
 
 const Header = () => (
-  <div className="HelpDialog--header">
-    <a
-      className="HelpDialog--btn"
-      href="https://github.com/excalidraw/excalidraw#documentation"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {t("helpDialog.documentation")}
-    </a>
-    <a
-      className="HelpDialog--btn"
-      href="https://blog.excalidraw.com"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {t("helpDialog.blog")}
-    </a>
-    <a
-      className="HelpDialog--btn"
-      href="https://github.com/excalidraw/excalidraw/issues"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {t("helpDialog.github")}
-    </a>
-  </div>
+  <div></div>
 );
 
 const Section = (props: { title: string; children: React.ReactNode }) => (
@@ -154,7 +129,7 @@ export const HelpDialog = ({ onClose }: { onClose?: () => void }) => {
                 <Shortcut label={t("toolBar.line")} shortcuts={["P", "6"]} />
                 <Shortcut
                   label={t("toolBar.freedraw")}
-                  shortcuts={["Shift + P", "X", "7"]}
+                  shortcuts={["Shift+P", "7"]}
                 />
                 <Shortcut label={t("toolBar.text")} shortcuts={["T", "8"]} />
                 <Shortcut label={t("toolBar.image")} shortcuts={["9"]} />
@@ -259,18 +234,6 @@ export const HelpDialog = ({ onClose }: { onClose?: () => void }) => {
                 <Shortcut
                   label={t("labels.multiSelect")}
                   shortcuts={[getShortcutKey(`Shift+${t("helpDialog.click")}`)]}
-                />
-                <Shortcut
-                  label={t("helpDialog.deepSelect")}
-                  shortcuts={[
-                    getShortcutKey(`CtrlOrCmd+${t("helpDialog.click")}`),
-                  ]}
-                />
-                <Shortcut
-                  label={t("helpDialog.deepBoxSelect")}
-                  shortcuts={[
-                    getShortcutKey(`CtrlOrCmd+${t("helpDialog.drag")}`),
-                  ]}
                 />
                 <Shortcut
                   label={t("labels.moveCanvas")}
@@ -393,14 +356,6 @@ export const HelpDialog = ({ onClose }: { onClose?: () => void }) => {
                 <Shortcut
                   label={t("labels.showBackground")}
                   shortcuts={[getShortcutKey("G")]}
-                />
-                <Shortcut
-                  label={t("labels.decreaseFontSize")}
-                  shortcuts={[getShortcutKey("CtrlOrCmd+Shift+<")]}
-                />
-                <Shortcut
-                  label={t("labels.increaseFontSize")}
-                  shortcuts={[getShortcutKey("CtrlOrCmd+Shift+>")]}
                 />
               </ShortcutIsland>
             </Column>

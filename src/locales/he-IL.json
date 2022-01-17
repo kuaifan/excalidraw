@@ -102,9 +102,7 @@
     "showBackground": "הצג צבעי רקע",
     "toggleTheme": "שינוי ערכת העיצוב",
     "personalLib": "",
-    "excalidrawLib": "",
-    "decreaseFontSize": "",
-    "increaseFontSize": ""
+    "excalidrawLib": ""
   },
   "buttons": {
     "clearReset": "אפס את הלוח",
@@ -117,6 +115,7 @@
     "copyPngToClipboard": "העתק PNG ללוח",
     "scale": "קנה מידה",
     "save": "שמירת קובץ נוכחי",
+    "saveContent": "",
     "saveAs": "שמירה בשם",
     "load": "טען",
     "getShareableLink": "קבל קישור לשיתוף",
@@ -206,12 +205,10 @@
     "resizeImage": "",
     "rotate": "ניתן להגביל זוויות על ידי לחיצה על SHIFT תוך כדי סיבוב",
     "lineEditor_info": "לחץ לחיצה כפולה או אנטר לעריכת הנקודות",
-    "lineEditor_pointSelected": "",
-    "lineEditor_nothingSelected": "",
+    "lineEditor_pointSelected": "לחץ על Delete להסרת נקודה, CtrlOrCmd+D לשכפל, או גרור להזזה",
+    "lineEditor_nothingSelected": "בחר נקודה להזזה או הסרה, או החזק את כפתור Alt והקלק להוספת נקודות חדשות",
     "placeImage": "",
-    "publishLibrary": "",
-    "bindTextToElement": "",
-    "deepBoxSelect": ""
+    "publishLibrary": ""
   },
   "canvasError": {
     "cannotShowPreview": "לא הצלחנו להציג את התצוגה המקדימה",
@@ -258,8 +255,6 @@
   "helpDialog": {
     "blog": "קרא את הבלוג שלנו",
     "click": "קליק",
-    "deepSelect": "",
-    "deepBoxSelect": "",
     "curvedArrow": "חץ מעוגל",
     "curvedLine": "קו מעוגל",
     "documentation": "תיעוד",

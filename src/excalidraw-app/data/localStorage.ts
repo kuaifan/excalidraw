@@ -5,13 +5,13 @@ import {
   getDefaultAppState,
 } from "../../appState";
 import { clearElementsForLocalStorage } from "../../element";
+import { STORAGE_KEYS as APP_STORAGE_KEYS } from "../../constants";
 
 export const STORAGE_KEYS = {
   LOCAL_STORAGE_ELEMENTS: "excalidraw",
   LOCAL_STORAGE_APP_STATE: "excalidraw-state",
   LOCAL_STORAGE_COLLAB: "excalidraw-collab",
   LOCAL_STORAGE_KEY_COLLAB_FORCE_FLAG: "collabLinkForceLoadFlag",
-  LOCAL_STORAGE_LIBRARY: "excalidraw-library",
 };
 
 export const saveUsernameToLocalStorage = (username: string) => {
@@ -53,6 +53,20 @@ export const saveToLocalStorage = (
       STORAGE_KEYS.LOCAL_STORAGE_APP_STATE,
       JSON.stringify(clearAppStateForLocalStorage(appState)),
     );
+    const searchParams = new URLSearchParams(window.location.search);
+    var eid = searchParams.get('eid');
+    var xhr = new XMLHttpRequest();
+    var url = "/api/file/content/draw?id=" + eid;
+    xhr.open('post',url,false)
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send("content=" + JSON.stringify(clearElementsForLocalStorage(elements)));
+    xhr.onreadystatechange =function(){
+      var data = JSON.parse(xhr.responseText);
+      if(data['ret'] == 1){
+        console.log('draw',data);
+      }
+    };
+
   } catch (error: any) {
     // Unable to access window.localStorage
     console.error(error);
@@ -62,7 +76,6 @@ export const saveToLocalStorage = (
 export const importFromLocalStorage = () => {
   let savedElements = null;
   let savedState = null;
-
   try {
     savedElements = localStorage.getItem(STORAGE_KEYS.LOCAL_STORAGE_ELEMENTS);
     savedState = localStorage.getItem(STORAGE_KEYS.LOCAL_STORAGE_APP_STATE);
@@ -98,6 +111,29 @@ export const importFromLocalStorage = () => {
   return { elements, appState };
 };
 
+export const  getInitData = (eid: string | null) => {
+  try {
+    var savedElements;
+    var xhr = new XMLHttpRequest();
+    var url = "/api/file/content/draw?id=" + eid;
+    xhr.open('get', url, false)
+    xhr.onreadystatechange =function(){
+      var data = JSON.parse(xhr.responseText);
+      if(data['ret'] == 1){
+        savedElements = JSON.stringify(data['data']['content']['elements']);
+        localStorage.setItem(
+          STORAGE_KEYS.LOCAL_STORAGE_ELEMENTS,
+          savedElements,
+        );
+      }
+    };
+    xhr.send('');
+  } catch (error: any) {
+    // Unable to access window.localStorage
+    console.error(error);
+  }
+}
+
 export const getElementsStorageSize = () => {
   try {
     const elements = localStorage.getItem(STORAGE_KEYS.LOCAL_STORAGE_ELEMENTS);
@@ -113,7 +149,9 @@ export const getTotalStorageSize = () => {
   try {
     const appState = localStorage.getItem(STORAGE_KEYS.LOCAL_STORAGE_APP_STATE);
     const collab = localStorage.getItem(STORAGE_KEYS.LOCAL_STORAGE_COLLAB);
-    const library = localStorage.getItem(STORAGE_KEYS.LOCAL_STORAGE_LIBRARY);
+    const library = localStorage.getItem(
+      APP_STORAGE_KEYS.LOCAL_STORAGE_LIBRARY,
+    );
 
     const appStateSize = appState?.length || 0;
     const collabSize = collab?.length || 0;

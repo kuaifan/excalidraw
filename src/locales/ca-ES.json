@@ -35,7 +35,7 @@
     "arrowhead_arrow": "Fletxa",
     "arrowhead_bar": "Barra",
     "arrowhead_dot": "Punt",
-    "arrowhead_triangle": "Triangle",
+    "arrowhead_triangle": "",
     "fontSize": "Mida de lletra",
     "fontFamily": "Tipus de lletra",
     "onlySelected": "Només seleccionats",
@@ -101,10 +101,8 @@
     "showStroke": "Mostra el selector de color del traç",
     "showBackground": "Mostra el selector de color de fons",
     "toggleTheme": "Activa o desactiva el tema",
-    "personalLib": "Biblioteca personal",
-    "excalidrawLib": "Biblioteca d'Excalidraw",
-    "decreaseFontSize": "",
-    "increaseFontSize": ""
+    "personalLib": "",
+    "excalidrawLib": ""
   },
   "buttons": {
     "clearReset": "Neteja el llenç",
@@ -117,6 +115,7 @@
     "copyPngToClipboard": "Copia el PNG al porta-retalls",
     "scale": "Escala",
     "save": "Desa al fitxer actual",
+    "saveContent": "",
     "saveAs": "Anomena i desa",
     "load": "Carrega",
     "getShareableLink": "Obté l'enllaç per a compartir",
@@ -138,12 +137,12 @@
     "lightMode": "Mode clar",
     "zenMode": "Mode zen",
     "exitZenMode": "Surt de mode zen",
-    "cancel": "Cancel·la",
-    "clear": "Neteja",
-    "remove": "Suprimeix",
-    "publishLibrary": "Publica",
-    "submit": "Envia",
-    "confirm": "Confirma"
+    "cancel": "",
+    "clear": "",
+    "remove": "",
+    "publishLibrary": "",
+    "submit": "",
+    "confirm": ""
   },
   "alerts": {
     "clearReset": "S'esborrarà tot el llenç. N'esteu segur?",
@@ -165,19 +164,19 @@
     "cannotRestoreFromImage": "L’escena no s’ha pogut restaurar des d’aquest fitxer d’imatge",
     "invalidSceneUrl": "No s'ha pogut importar l'escena des de l'adreça URL proporcionada. Està malformada o no conté dades Excalidraw JSON vàlides.",
     "resetLibrary": "Això buidarà la biblioteca. N'esteu segur?",
-    "removeItemsFromsLibrary": "Suprimir {{count}} element(s) de la biblioteca?",
-    "invalidEncryptionKey": "La clau d'encriptació ha de tenir 22 caràcters. La col·laboració en directe està desactivada."
+    "removeItemsFromsLibrary": "",
+    "invalidEncryptionKey": ""
   },
   "errors": {
-    "unsupportedFileType": "Tipus de fitxer no suportat.",
-    "imageInsertError": "No s'ha pogut insertar la imatge, torneu-ho a provar més tard...",
-    "fileTooBig": "El fitxer és massa gros. La mida màxima permesa és {{maxSize}}.",
-    "svgImageInsertError": "No ha estat possible inserir la imatge SVG. Les marques SVG semblen invàlides.",
-    "invalidSVGString": "SVG no vàlid."
+    "unsupportedFileType": "",
+    "imageInsertError": "",
+    "fileTooBig": "",
+    "svgImageInsertError": "",
+    "invalidSVGString": ""
   },
   "toolBar": {
     "selection": "Selecció",
-    "image": "Insereix imatge",
+    "image": "",
     "rectangle": "Rectangle",
     "diamond": "Rombe",
     "ellipse": "El·lipse",
@@ -194,7 +193,7 @@
     "shapes": "Formes"
   },
   "hints": {
-    "canvasPanning": "Per a moure el llenç, mantingueu premuda la roda del ratolí o la tecla espai mentre l'arrossegueu",
+    "canvasPanning": "",
     "linearElement": "Feu clic per a dibuixar múltiples punts; arrossegueu per a una sola línia",
     "freeDraw": "Feu clic i arrossegueu, deixeu anar per a finalitzar",
     "text": "Consell: també podeu afegir text fent doble clic en qualsevol lloc amb l'eina de selecció",
@@ -203,15 +202,13 @@
     "linearElementMulti": "Feu clic a l'ultim punt, o pitgeu Esc o Retorn per a finalitzar",
     "lockAngle": "Per restringir els angles, mantenir premut el majúscul (SHIFT)",
     "resize": "Per restringir les proporcions mentres es canvia la mida, mantenir premut el majúscul (SHIFT); per canviar la mida des del centre, mantenir premut ALT",
-    "resizeImage": "Podeu redimensionar lliurement prement MAJÚSCULA;\nper a redimensionar des del centre, premeu ALT",
+    "resizeImage": "",
     "rotate": "Per restringir els angles mentre gira, mantenir premut el majúscul (SHIFT)",
     "lineEditor_info": "Fes doble clic o premi Enter per editar punts",
-    "lineEditor_pointSelected": "",
-    "lineEditor_nothingSelected": "",
-    "placeImage": "Feu clic per a col·locar la imatge o clic i arrossegar per a establir-ne la mida manualment",
-    "publishLibrary": "Publiqueu la vostra pròpia llibreria",
-    "bindTextToElement": "Premeu enter per a afegir-hi text",
-    "deepBoxSelect": ""
+    "lineEditor_pointSelected": "Premeu Suprimir per a eliminar el punt, CtrlOrCmd+D per a duplicar-lo, o arrossegueu-lo per a moure'l",
+    "lineEditor_nothingSelected": "Selecciona un punt per moure o eliminar, o manté premut Alt i fes clic per afegir punts nous",
+    "placeImage": "",
+    "publishLibrary": ""
   },
   "canvasError": {
     "cannotShowPreview": "No es pot mostrar la previsualització",
@@ -258,8 +255,6 @@
   "helpDialog": {
     "blog": "Llegiu el nostre blog",
     "click": "clic",
-    "deepSelect": "",
-    "deepBoxSelect": "",
     "curvedArrow": "Fletxa corba",
     "curvedLine": "Línia corba",
     "documentation": "Documentació",
@@ -281,55 +276,55 @@
     "zoomToSelection": "Zoom per veure la selecció"
   },
   "clearCanvasDialog": {
-    "title": "Neteja el llenç"
+    "title": ""
   },
   "publishDialog": {
-    "title": "Publica la biblioteca",
-    "itemName": "Nom de l'element",
-    "authorName": "Nom de l'autor/a",
-    "githubUsername": "Nom d'usuari de GitHub",
-    "twitterUsername": "Nom d'usuari de Twitter",
-    "libraryName": "Nom de la biblioteca",
-    "libraryDesc": "Descripció de la biblioteca",
-    "website": "Lloc web",
+    "title": "",
+    "itemName": "",
+    "authorName": "",
+    "githubUsername": "",
+    "twitterUsername": "",
+    "libraryName": "",
+    "libraryDesc": "",
+    "website": "",
     "placeholder": {
-      "authorName": "Nom o usuari",
-      "libraryName": "Nom de la vostra biblioteca",
-      "libraryDesc": "Descripció de la biblioteca per a ajudar a la gent a entendre'n el funcionament",
+      "authorName": "",
+      "libraryName": "",
+      "libraryDesc": "",
       "githubHandle": "",
       "twitterHandle": "",
-      "website": "Enllaç al vostre lloc web personal o a qualsevol altre (opcional)"
+      "website": ""
     },
     "errors": {
-      "required": "Requerit",
-      "website": "Introduïu una URL vàlida"
+      "required": "",
+      "website": ""
     },
     "noteDescription": {
-      "pre": "Envieu la vostra biblioteca perquè sigui inclosa al ",
-      "link": "repositori públic",
-      "post": "per tal que altres persones puguin fer-ne ús en els seus dibuixos."
+      "pre": "",
+      "link": "",
+      "post": ""
     },
     "noteGuidelines": {
-      "pre": "La biblioteca ha de ser aprovada manualment. Si us plau, llegiu les ",
-      "link": "directrius",
-      "post": " abans d'enviar-hi res. Necessitareu un compte de GitHub per a comunicar i fer-hi canvis si cal, però no és requisit imprescindible."
+      "pre": "",
+      "link": "",
+      "post": ""
     },
     "noteLicense": {
-      "pre": "Quan l'envieu, accepteu que la biblioteca sigui publicada sota la ",
-      "link": "llicència MIT, ",
-      "post": "que, en resum, vol dir que qualsevol persona pot fer-ne ús sense restriccions."
+      "pre": "",
+      "link": "",
+      "post": ""
     },
-    "noteItems": "Cada element de la biblioteca ha de tenir el seu propi nom per tal que sigui filtrable. S'hi inclouran els elements següents:",
-    "atleastOneLibItem": "Si us plau, seleccioneu si més no un element de la biblioteca per a començar"
+    "noteItems": "",
+    "atleastOneLibItem": ""
   },
   "publishSuccessDialog": {
-    "title": "Biblioteca enviada",
-    "content": "Gràcies, {{authorName}}. La vostra biblioteca ha estat enviada per a ser revisada. Podeu comprovar-ne l'estat",
-    "link": "aquí"
+    "title": "",
+    "content": "",
+    "link": ""
   },
   "confirmDialog": {
-    "resetLibrary": "Restableix la biblioteca",
-    "removeItemsFromLib": "Suprimeix els elements seleccionats de la llibreria"
+    "resetLibrary": "",
+    "removeItemsFromLib": ""
   },
   "encrypted": {
     "tooltip": "Els vostres dibuixos estan xifrats de punta a punta de manera que els servidors d’Excalidraw no els veuran mai.",
@@ -351,7 +346,7 @@
     "width": "Amplada"
   },
   "toast": {
-    "addedToLibrary": "Afegit a la biblioteca",
+    "addedToLibrary": "",
     "copyStyles": "S'han copiat els estils.",
     "copyToClipboard": "S'ha copiat al porta-retalls.",
     "copyToClipboardAsPng": "S'ha copiat {{exportSelection}} al porta-retalls en format PNG\n({{exportColorScheme}})",
@@ -366,29 +361,29 @@
     "f1f3f5": "Gris 1",
     "fff5f5": "Vermell 0",
     "fff0f6": "Rosa 0",
-    "f8f0fc": "Malva 0",
-    "f3f0ff": "Violat 0",
-    "edf2ff": "Indi 0",
+    "f8f0fc": "",
+    "f3f0ff": "",
+    "edf2ff": "",
     "e7f5ff": "Blau 0",
-    "e3fafc": "Cian 0",
-    "e6fcf5": "Xarxet 0",
+    "e3fafc": "",
+    "e6fcf5": "",
     "ebfbee": "Verd 0",
-    "f4fce3": "Llima 0",
+    "f4fce3": "",
     "fff9db": "Groc 0",
-    "fff4e6": "Taronja 0",
+    "fff4e6": "",
     "transparent": "Transparent",
     "ced4da": "Gris 4",
     "868e96": "Gris 6",
     "fa5252": "Vermell 6",
     "e64980": "Rosa 6",
-    "be4bdb": "Malva 6",
-    "7950f2": "Violat 6",
-    "4c6ef5": "Indi 6",
+    "be4bdb": "",
+    "7950f2": "",
+    "4c6ef5": "",
     "228be6": "Blau 6",
-    "15aabf": "Cian 6",
-    "12b886": "Xarxet 6",
+    "15aabf": "",
+    "12b886": "",
     "40c057": "Verd 6",
-    "82c91e": "Llima 6",
+    "82c91e": "",
     "fab005": "Groc 6",
     "fd7e14": "Taronja 6",
     "000000": "Negre",
@@ -396,14 +391,14 @@
     "495057": "Gris 7",
     "c92a2a": "Vermell 9",
     "a61e4d": "Rosa 9",
-    "862e9c": "Malva 9",
-    "5f3dc4": "Violat 9",
-    "364fc7": "Indi 9",
+    "862e9c": "",
+    "5f3dc4": "",
+    "364fc7": "",
     "1864ab": "Blau 9",
-    "0b7285": "Cian 9",
-    "087f5b": "Xarxet 9",
+    "0b7285": "",
+    "087f5b": "",
     "2b8a3e": "Verd 9",
-    "5c940d": "Llima 9",
+    "5c940d": "",
     "e67700": "Groc 9",
     "d9480f": "Taronja 9"
   }

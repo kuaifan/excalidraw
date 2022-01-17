@@ -17,6 +17,7 @@ import { Tooltip } from "../components/Tooltip";
 import { newElementWith } from "../element/mutateElement";
 import { getDefaultAppState } from "../appState";
 import ClearCanvas from "../components/ClearCanvas";
+import ContentSave from "../components/ContentSave";
 
 export const actionChangeViewBackgroundColor = register({
   name: "changeViewBackgroundColor",
@@ -69,6 +70,31 @@ export const actionClearCanvas = register({
   },
 
   PanelComponent: ({ updateData }) => <ClearCanvas onConfirm={updateData} />,
+});
+
+export const actionContentSave = register({
+  name: "contentSave",
+  perform: (elements, appState, _, app) => {
+    app.imageCache.clear();
+    return {
+      elements: elements.map((element) =>
+        newElementWith(element, { isDeleted: true }),
+      ),
+      appState: {
+        ...getDefaultAppState(),
+        files: {},
+        theme: appState.theme,
+        elementLocked: appState.elementLocked,
+        exportBackground: appState.exportBackground,
+        exportEmbedScene: appState.exportEmbedScene,
+        gridSize: appState.gridSize,
+        showStats: appState.showStats,
+        pasteDialog: appState.pasteDialog,
+      },
+      commitToHistory: true,
+    };
+  },
+  PanelComponent: ({ updateData }) => <ContentSave onConfirm={updateData} />,
 });
 
 export const actionZoomIn = register({

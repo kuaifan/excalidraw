@@ -102,9 +102,7 @@
     "showBackground": "Show background color picker",
     "toggleTheme": "Toggle theme",
     "personalLib": "Personal Library",
-    "excalidrawLib": "Excalidraw Library",
-    "decreaseFontSize": "Decrease font size",
-    "increaseFontSize": "Increase font size"
+    "excalidrawLib": "Excalidraw Library"
   },
   "buttons": {
     "clearReset": "Reset the canvas",
@@ -117,6 +115,7 @@
     "copyPngToClipboard": "Copy PNG to clipboard",
     "scale": "Scale",
     "save": "Save to current file",
+    "saveContent": "save",
     "saveAs": "Save as",
     "load": "Load",
     "getShareableLink": "Get shareable link",
@@ -147,6 +146,7 @@
   },
   "alerts": {
     "clearReset": "This will clear the whole canvas. Are you sure?",
+    "theSaved": "The saved",
     "couldNotCreateShareableLink": "Couldn't create shareable link.",
     "couldNotCreateShareableLinkTooBig": "Couldn't create shareable link: the scene is too big",
     "couldNotLoadInvalidFile": "Couldn't load invalid file",
@@ -210,8 +210,7 @@
     "lineEditor_nothingSelected": "Select a point to edit (hold SHIFT to select multiple),\nor hold Alt and click to add new points",
     "placeImage": "Click to place the image, or click and drag to set its size manually",
     "publishLibrary": "Publish your own library",
-    "bindTextToElement": "Press enter to add text",
-    "deepBoxSelect": "Hold CtrlOrCmd to deep select, and to prevent dragging"
+    "bindTextToElement": "Press enter to add text"
   },
   "canvasError": {
     "cannotShowPreview": "Cannot show preview",
@@ -258,8 +257,6 @@
   "helpDialog": {
     "blog": "Read our blog",
     "click": "click",
-    "deepSelect": "Deep select",
-    "deepBoxSelect": "Deep select within box, and prevent dragging",
     "curvedArrow": "Curved arrow",
     "curvedLine": "Curved line",
     "documentation": "Documentation",
@@ -282,6 +279,9 @@
   },
   "clearCanvasDialog": {
     "title": "Clear canvas"
+  },
+  "contentSaveDialog": {
+    "title": "Save the changes"
   },
   "publishDialog": {
     "title": "Publish library",

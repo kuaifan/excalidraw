@@ -102,12 +102,11 @@
     "showBackground": "背景色ピッカーを表示",
     "toggleTheme": "テーマの切り替え",
     "personalLib": "個人ライブラリ",
-    "excalidrawLib": "Excalidrawライブラリ",
-    "decreaseFontSize": "",
-    "increaseFontSize": ""
+    "excalidrawLib": "Excalidrawライブラリ"
   },
   "buttons": {
     "clearReset": "キャンバスのリセット",
+    "theSaved": "保存済み",
     "exportJSON": "ファイルへエクスポート",
     "exportImage": "画像として保存",
     "export": "エクスポート",
@@ -117,6 +116,7 @@
     "copyPngToClipboard": "クリップボードにPNGをコピー",
     "scale": "スケール",
     "save": "現在のファイルに保存",
+    "saveContent": "保存＃ホゾン＃",
     "saveAs": "名前を付けて保存",
     "load": "読み込み...",
     "getShareableLink": "共有URLの取得",
@@ -147,6 +147,7 @@
   },
   "alerts": {
     "clearReset": "この操作によってキャンバス全体が消えます。よろしいですか？",
+    "theSaved": "保存済み",
     "couldNotCreateShareableLink": "共有URLを作成できませんでした。",
     "couldNotCreateShareableLinkTooBig": "共有可能なリンクを作成できませんでした: シーンが大きすぎます",
     "couldNotLoadInvalidFile": "無効なファイルを読み込めませんでした。",
@@ -206,12 +207,10 @@
     "resizeImage": "SHIFTを長押しすると自由にサイズを変更できます。\n中央からサイズを変更するにはALTを長押しします",
     "rotate": "回転中にSHIFT キーを押すと角度を制限することができます",
     "lineEditor_info": "ポイントを編集するには、ダブルクリックまたはEnterキーを押します",
-    "lineEditor_pointSelected": "Deleteキーを押すと点を削除、CtrlOrCmd+Dで複製、マウスドラッグで移動",
-    "lineEditor_nothingSelected": "編集する点を選択（SHIFTを押したままで複数選択）、\nAltキーを押しながらクリックすると新しい点を追加",
+    "lineEditor_pointSelected": "削除ボタンを押して点を削除します。Ctrl+D または Cmd+D で複製します。またはドラッグして移動します",
+    "lineEditor_nothingSelected": "移動または削除する点を選択するか、Altキーを押しながらクリックして新しい点を追加します",
     "placeImage": "クリックして画像を配置するか、クリックしてドラッグしてサイズを手動で設定します",
-    "publishLibrary": "自分のライブラリを公開",
-    "bindTextToElement": "Enterを押してテキストを追加",
-    "deepBoxSelect": ""
+    "publishLibrary": "自分のライブラリを公開"
   },
   "canvasError": {
     "cannotShowPreview": "プレビューを表示できません",
@@ -258,8 +257,6 @@
   "helpDialog": {
     "blog": "公式ブログを読む",
     "click": "クリック",
-    "deepSelect": "",
-    "deepBoxSelect": "",
     "curvedArrow": "カーブした矢印",
     "curvedLine": "曲線",
     "documentation": "ドキュメント",
@@ -283,6 +280,9 @@
   "clearCanvasDialog": {
     "title": "キャンバスを消去"
   },
+  "contentSaveDialog": {
+    "title": "修正を保存する"
+  },
   "publishDialog": {
     "title": "ライブラリを公開",
     "itemName": "アイテム名",
@@ -298,7 +298,7 @@
       "libraryDesc": "ライブラリの使い方を理解するための説明",
       "githubHandle": "GitHubハンドル(任意)。一度レビューのために送信されると、ライブラリを編集できます",
       "twitterHandle": "Twitterのユーザー名 (任意)。Twitterでプロモーションする際にクレジットする人を知っておくためのものです",
-      "website": "個人のウェブサイトまたは他のサイトへのリンク (任意)"
+      "website": "個人のウェブサイトまたは他のサイトへのリンク (オプション)"
     },
     "errors": {
       "required": "必須項目",

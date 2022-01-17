@@ -102,9 +102,7 @@
     "showBackground": "Näytä taustavärin valitsin",
     "toggleTheme": "Vaihda teema",
     "personalLib": "Oma kirjasto",
-    "excalidrawLib": "Excalidraw kirjasto",
-    "decreaseFontSize": "",
-    "increaseFontSize": ""
+    "excalidrawLib": "Excalidraw kirjasto"
   },
   "buttons": {
     "clearReset": "Tyhjennä piirtoalue",
@@ -117,6 +115,7 @@
     "copyPngToClipboard": "Kopioi PNG-tiedosto leikepöydälle",
     "scale": "Koko",
     "save": "Tallenna nykyiseen tiedostoon",
+    "saveContent": "",
     "saveAs": "Tallenna nimellä",
     "load": "Avaa",
     "getShareableLink": "Hae jaettava linkki",
@@ -206,12 +205,10 @@
     "resizeImage": "Voit muuttaa kokoa vapaasti pitämällä SHIFTiä pohjassa, pidä ALT pohjassa muuttaaksesi kokoa keskipisteen ympäri",
     "rotate": "Voit rajoittaa kulman pitämällä SHIFT pohjassa pyörittäessäsi",
     "lineEditor_info": "Kaksoisnapauta tai paina Enter muokataksesi pisteitä",
-    "lineEditor_pointSelected": "",
-    "lineEditor_nothingSelected": "",
+    "lineEditor_pointSelected": "Paina Delete poistaaksesi pisteen, Ctrl tai Cmd+D monistaaksesi, tai raahaa liikuttaaksesi",
+    "lineEditor_nothingSelected": "Valitse liikutettava tai poistettava piste, tai pidä ALT-näppäintä alaspainettuna ja napsauta lisätäksesi uusia pisteitä",
     "placeImage": "Klikkaa asettaaksesi kuvan, tai klikkaa ja raahaa asettaaksesi sen koon manuaalisesti",
-    "publishLibrary": "Julkaise oma kirjasto",
-    "bindTextToElement": "",
-    "deepBoxSelect": ""
+    "publishLibrary": "Julkaise oma kirjasto"
   },
   "canvasError": {
     "cannotShowPreview": "Esikatselua ei voitu näyttää",
@@ -258,8 +255,6 @@
   "helpDialog": {
     "blog": "Lue blogiamme",
     "click": "klikkaa",
-    "deepSelect": "",
-    "deepBoxSelect": "",
     "curvedArrow": "Kaareva nuoli",
     "curvedLine": "Kaareva viiva",
     "documentation": "Käyttöohjeet",

@@ -1,6 +1,7 @@
 import fallbackLangData from "./locales/en.json";
 import percentages from "./locales/percentages.json";
 import { ENV } from "./constants";
+import {STORAGE_KEYS} from "./excalidraw-app/data/localStorage";
 
 const COMPLETION_THRESHOLD = 85;
 
@@ -9,18 +10,46 @@ export interface Language {
   label: string;
   rtl?: boolean;
 }
-
-export const defaultLang = { code: "en", label: "English" };
-
+const searchParams = new URLSearchParams(window.location.search);
+const lang = searchParams.get("lang");
+let langCode = "";
+let langLabel = "";
+if(lang == "TC"){
+  langCode = "zh-TW";
+  langLabel = "繁體中文";
+}else if (lang == "CN"){
+  langCode = "zh-CN";
+  langLabel = "简体中文";
+}else if (lang == "JA"){
+  langCode = "ja-JP";
+  langLabel = "日本語";
+}else if (lang == "KO"){
+  langCode = "ko-KR";
+  langLabel = "한국어";
+}else{
+   langCode = "en";
+   langLabel = "English";
+}
+localStorage.setItem(
+  "i18nextLng",
+  langCode,
+);
+// i18nextLng
+export const defaultLang = { code: langCode, label: langLabel };
+//   "EN": "English",
+//   "KM": "ភាសាខ្មែរ",
+//   "TH": "ภาษาไทย",
+//   "KO": "한국어",
+//   "JA": "日本語",
+//   "CN": "简体中文",
+//   "TC": "繁體中文",
 const allLanguages: Language[] = [
   { code: "ar-SA", label: "العربية", rtl: true },
   { code: "bg-BG", label: "Български" },
   { code: "ca-ES", label: "Català" },
-  { code: "cs-CZ", label: "Česky" },
   { code: "de-DE", label: "Deutsch" },
   { code: "el-GR", label: "Ελληνικά" },
   { code: "es-ES", label: "Español" },
-  { code: "eu-ES", label: "Euskara" },
   { code: "fa-IR", label: "فارسی", rtl: true },
   { code: "fi-FI", label: "Suomi" },
   { code: "fr-FR", label: "Français" },
@@ -29,12 +58,9 @@ const allLanguages: Language[] = [
   { code: "hu-HU", label: "Magyar" },
   { code: "id-ID", label: "Bahasa Indonesia" },
   { code: "it-IT", label: "Italiano" },
-  { code: "ja-JP", label: "日本語" },
+  // { code: "ja-JP", label: "日本語" },
   { code: "kab-KAB", label: "Taqbaylit" },
-  { code: "kk-KZ", label: "Қазақ тілі" },
-  { code: "ko-KR", label: "한국어" },
-  { code: "lt-LT", label: "Lietuvių" },
-  { code: "lv-LV", label: "Latviešu" },
+  // { code: "ko-KR", label: "한국어" },
   { code: "my-MM", label: "Burmese" },
   { code: "nb-NO", label: "Norsk bokmål" },
   { code: "nl-NL", label: "Nederlands" },
@@ -50,8 +76,11 @@ const allLanguages: Language[] = [
   { code: "sv-SE", label: "Svenska" },
   { code: "tr-TR", label: "Türkçe" },
   { code: "uk-UA", label: "Українська" },
-  { code: "zh-CN", label: "简体中文" },
-  { code: "zh-TW", label: "繁體中文" },
+  // { code: "zh-CN", label: "简体中文" },
+  // { code: "zh-TW", label: "繁體中文" },
+  { code: "lv-LV", label: "Latviešu" },
+  { code: "cs-CZ", label: "Česky" },
+  { code: "kk-KZ", label: "Қазақ тілі" },
 ].concat([defaultLang]);
 
 export const languages: Language[] = allLanguages

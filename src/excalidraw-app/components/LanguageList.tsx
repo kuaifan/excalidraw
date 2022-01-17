@@ -11,20 +11,6 @@ export const LanguageList = ({
   currentLangCode?: i18n.Language["code"];
 }) => (
   <React.Fragment>
-    <select
-      className="dropdown-select dropdown-select__language"
-      onChange={({ target }) => onChange(target.value)}
-      value={currentLangCode}
-      aria-label={i18n.t("buttons.selectLanguage")}
-    >
-      <option key={i18n.defaultLang.code} value={i18n.defaultLang.code}>
-        {i18n.defaultLang.label}
-      </option>
-      {languages.map((lang) => (
-        <option key={lang.code} value={lang.code}>
-          {lang.label}
-        </option>
-      ))}
-    </select>
+
   </React.Fragment>
 );

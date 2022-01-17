@@ -255,7 +255,6 @@ export type SceneData = {
   appState?: ImportedDataState["appState"];
   collaborators?: Map<string, Collaborator>;
   commitToHistory?: boolean;
-  libraryItems?: LibraryItems | LibraryItems_v1;
 };
 
 export enum UserIdleState {
@@ -283,6 +282,7 @@ export type ExportOpts = {
 type CanvasActions = {
   changeViewBackgroundColor?: boolean;
   clearCanvas?: boolean;
+  contentSave?: boolean;
   export?: false | ExportOpts;
   loadScene?: boolean;
   saveToActiveFile?: boolean;

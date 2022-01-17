@@ -7,6 +7,7 @@ import { TopErrorBoundary } from "../components/TopErrorBoundary";
 import {
   APP_NAME,
   EVENT,
+  STORAGE_KEYS,
   TITLE_TIMEOUT,
   URL_HASH_KEYS,
   VERSION_TIMEOUT,
@@ -49,11 +50,6 @@ import CollabWrapper, {
 } from "./collab/CollabWrapper";
 import { LanguageList } from "./components/LanguageList";
 import { exportToBackend, getCollaborationLinkData, loadScene } from "./data";
-import {
-  importFromLocalStorage,
-  saveToLocalStorage,
-  STORAGE_KEYS,
-} from "./data/localStorage";
 import CustomStats from "./CustomStats";
 import { restoreAppState, RestoredDataState } from "../data/restore";
 import { Tooltip } from "../components/Tooltip";
@@ -67,6 +63,12 @@ import { FileManager, updateStaleImageStatuses } from "./data/FileManager";
 import { newElementWith } from "../element/mutateElement";
 import { isInitializedImageElement } from "../element/typeChecks";
 import { loadFilesFromFirebase } from "./data/firebase";
+import {clearElementsForLocalStorage} from "../element";
+import {
+  getInitData,
+  importFromLocalStorage,
+  saveToLocalStorage,
+} from "./data/localStorage";
 
 const filesStore = createStore("files-db", "files-store");
 
@@ -166,7 +168,8 @@ const initializeScene = async (opts: {
     /^#json=([a-zA-Z0-9_-]+),([a-zA-Z0-9_-]+)$/,
   );
   const externalUrlMatch = window.location.hash.match(/^#url=(.*)$/);
-
+  var eid = searchParams.get('eid');
+  getInitData(eid);
   const localDataState = importFromLocalStorage();
 
   let scene: RestoredDataState & {
@@ -259,15 +262,7 @@ const initializeScene = async (opts: {
 
 const PlusLinkJSX = (
   <p style={{ direction: "ltr", unicodeBidi: "embed" }}>
-    Introducing Excalidraw+
     <br />
-    <a
-      href="https://plus.excalidraw.com/plus?utm_source=excalidraw&utm_medium=banner&utm_campaign=launch"
-      target="_blank"
-      rel="noreferrer"
-    >
-      Try out now!
-    </a>
   </p>
 );
 
@@ -543,17 +538,7 @@ const ExcalidrawWrapper = () => {
   const renderFooter = useCallback(
     (isMobile: boolean) => {
       const renderEncryptedIcon = () => (
-        <a
-          className="encrypted-icon tooltip"
-          href="https://blog.excalidraw.com/end-to-end-encryption/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={t("encrypted.link")}
-        >
-          <Tooltip label={t("encrypted.tooltip")} long={true}>
-            {shield}
-          </Tooltip>
-        </a>
+        <a></a>
       );
 
       const renderLanguageList = () => (

@@ -41,16 +41,8 @@ import {
   isTextElement,
   redrawTextBoundingBox,
 } from "../element";
-import { mutateElement, newElementWith } from "../element/mutateElement";
-import {
-  getBoundTextElement,
-  getContainerElement,
-} from "../element/textElement";
-import {
-  isBoundToContainer,
-  isLinearElement,
-  isLinearElementType,
-} from "../element/typeChecks";
+import { newElementWith } from "../element/mutateElement";
+import { isLinearElement, isLinearElementType } from "../element/typeChecks";
 import {
   Arrowhead,
   ExcalidrawElement,
@@ -60,7 +52,6 @@ import {
   TextAlign,
 } from "../element/types";
 import { getLanguage, t } from "../i18n";
-import { KEYS } from "../keys";
 import { randomInteger } from "../random";
 import {
   canChangeSharpness,
@@ -71,10 +62,9 @@ import {
   isSomeElementSelected,
 } from "../scene";
 import { hasStrokeColor } from "../scene/comparisons";
+import Scene from "../scene/Scene";
 import { arrayToMap } from "../utils";
 import { register } from "./register";
-
-const FONT_SIZE_RELATIVE_INCREASE_STEP = 0.1;
 
 const changeProperty = (
   elements: readonly ExcalidrawElement[],
@@ -117,96 +107,18 @@ const getFormValue = function <T>(
   );
 };
 
-const offsetElementAfterFontResize = (
-  prevElement: ExcalidrawTextElement,
-  nextElement: ExcalidrawTextElement,
-) => {
-  if (isBoundToContainer(nextElement)) {
-    return nextElement;
-  }
-  return mutateElement(
-    nextElement,
-    {
-      x:
-        prevElement.textAlign === "left"
-          ? prevElement.x
-          : prevElement.x +
-            (prevElement.width - nextElement.width) /
-              (prevElement.textAlign === "center" ? 2 : 1),
-      // centering vertically is non-standard, but for Excalidraw I think
-      // it makes sense
-      y: prevElement.y + (prevElement.height - nextElement.height) / 2,
-    },
-    false,
-  );
-};
-
-const changeFontSize = (
-  elements: readonly ExcalidrawElement[],
-  appState: AppState,
-  getNewFontSize: (element: ExcalidrawTextElement) => number,
-) => {
-  const newFontSizes = new Set<number>();
-
-  return {
-    elements: changeProperty(
-      elements,
-      appState,
-      (oldElement) => {
-        if (isTextElement(oldElement)) {
-          const newFontSize = getNewFontSize(oldElement);
-          newFontSizes.add(newFontSize);
-
-          let newElement: ExcalidrawTextElement = newElementWith(oldElement, {
-            fontSize: newFontSize,
-          });
-          redrawTextBoundingBox(
-            newElement,
-            getContainerElement(oldElement),
-            appState,
-          );
-
-          newElement = offsetElementAfterFontResize(oldElement, newElement);
-
-          return newElement;
-        }
-
-        return oldElement;
-      },
-      true,
-    ),
-    appState: {
-      ...appState,
-      // update state only if we've set all select text elements to
-      // the same font size
-      currentItemFontSize:
-        newFontSizes.size === 1
-          ? [...newFontSizes][0]
-          : appState.currentItemFontSize,
-    },
-    commitToHistory: true,
-  };
-};
-
-// -----------------------------------------------------------------------------
-
 export const actionChangeStrokeColor = register({
   name: "changeStrokeColor",
   perform: (elements, appState, value) => {
     return {
       ...(value.currentItemStrokeColor && {
-        elements: changeProperty(
-          elements,
-          appState,
-          (el) => {
-            return hasStrokeColor(el.type)
-              ? newElementWith(el, {
-                  strokeColor: value.currentItemStrokeColor,
-                })
-              : el;
-          },
-          true,
-        ),
+        elements: changeProperty(elements, appState, (el) => {
+          return hasStrokeColor(el.type)
+            ? newElementWith(el, {
+                strokeColor: value.currentItemStrokeColor,
+              })
+            : el;
+        }),
       }),
       appState: {
         ...appState,
@@ -520,7 +432,33 @@ export const actionChangeOpacity = register({
 export const actionChangeFontSize = register({
   name: "changeFontSize",
   perform: (elements, appState, value) => {
-    return changeFontSize(elements, appState, () => value);
+    return {
+      elements: changeProperty(
+        elements,
+        appState,
+        (el) => {
+          if (isTextElement(el)) {
+            const element: ExcalidrawTextElement = newElementWith(el, {
+              fontSize: value,
+            });
+            let container = null;
+            if (el.containerId) {
+              container = Scene.getScene(el)!.getElement(el.containerId);
+            }
+            redrawTextBoundingBox(element, container, appState);
+            return element;
+          }
+
+          return el;
+        },
+        true,
+      ),
+      appState: {
+        ...appState,
+        currentItemFontSize: value,
+      },
+      commitToHistory: true,
+    };
   },
   PanelComponent: ({ elements, appState, updateData }) => (
     <fieldset>
@@ -552,60 +490,13 @@ export const actionChangeFontSize = register({
         value={getFormValue(
           elements,
           appState,
-          (element) => {
-            if (isTextElement(element)) {
-              return element.fontSize;
-            }
-            const boundTextElement = getBoundTextElement(element);
-            if (boundTextElement) {
-              return boundTextElement.fontSize;
-            }
-            return null;
-          },
+          (element) => isTextElement(element) && element.fontSize,
           appState.currentItemFontSize || DEFAULT_FONT_SIZE,
         )}
         onChange={(value) => updateData(value)}
       />
     </fieldset>
   ),
-});
-
-export const actionDecreaseFontSize = register({
-  name: "decreaseFontSize",
-  perform: (elements, appState, value) => {
-    return changeFontSize(elements, appState, (element) =>
-      Math.round(
-        // get previous value before relative increase (doesn't work fully
-        // due to rounding and float precision issues)
-        (1 / (1 + FONT_SIZE_RELATIVE_INCREASE_STEP)) * element.fontSize,
-      ),
-    );
-  },
-  keyTest: (event) => {
-    return (
-      event[KEYS.CTRL_OR_CMD] &&
-      event.shiftKey &&
-      // KEYS.COMMA needed for MacOS
-      (event.key === KEYS.CHEVRON_LEFT || event.key === KEYS.COMMA)
-    );
-  },
-});
-
-export const actionIncreaseFontSize = register({
-  name: "increaseFontSize",
-  perform: (elements, appState, value) => {
-    return changeFontSize(elements, appState, (element) =>
-      Math.round(element.fontSize * (1 + FONT_SIZE_RELATIVE_INCREASE_STEP)),
-    );
-  },
-  keyTest: (event) => {
-    return (
-      event[KEYS.CTRL_OR_CMD] &&
-      event.shiftKey &&
-      // KEYS.PERIOD needed for MacOS
-      (event.key === KEYS.CHEVRON_RIGHT || event.key === KEYS.PERIOD)
-    );
-  },
 });
 
 export const actionChangeFontFamily = register({
@@ -615,23 +506,20 @@ export const actionChangeFontFamily = register({
       elements: changeProperty(
         elements,
         appState,
-        (oldElement) => {
-          if (isTextElement(oldElement)) {
-            const newElement: ExcalidrawTextElement = newElementWith(
-              oldElement,
-              {
-                fontFamily: value,
-              },
-            );
-            redrawTextBoundingBox(
-              newElement,
-              getContainerElement(oldElement),
-              appState,
-            );
-            return newElement;
+        (el) => {
+          if (isTextElement(el)) {
+            const element: ExcalidrawTextElement = newElementWith(el, {
+              fontFamily: value,
+            });
+            let container = null;
+            if (el.containerId) {
+              container = Scene.getScene(el)!.getElement(el.containerId);
+            }
+            redrawTextBoundingBox(element, container, appState);
+            return element;
           }
 
-          return oldElement;
+          return el;
         },
         true,
       ),
@@ -674,16 +562,7 @@ export const actionChangeFontFamily = register({
           value={getFormValue(
             elements,
             appState,
-            (element) => {
-              if (isTextElement(element)) {
-                return element.fontFamily;
-              }
-              const boundTextElement = getBoundTextElement(element);
-              if (boundTextElement) {
-                return boundTextElement.fontFamily;
-              }
-              return null;
-            },
+            (element) => isTextElement(element) && element.fontFamily,
             appState.currentItemFontFamily || DEFAULT_FONT_FAMILY,
           )}
           onChange={(value) => updateData(value)}
@@ -700,23 +579,20 @@ export const actionChangeTextAlign = register({
       elements: changeProperty(
         elements,
         appState,
-        (oldElement) => {
-          if (isTextElement(oldElement)) {
-            const newElement: ExcalidrawTextElement = newElementWith(
-              oldElement,
-              {
-                textAlign: value,
-              },
-            );
-            redrawTextBoundingBox(
-              newElement,
-              getContainerElement(oldElement),
-              appState,
-            );
-            return newElement;
+        (el) => {
+          if (isTextElement(el)) {
+            const element: ExcalidrawTextElement = newElementWith(el, {
+              textAlign: value,
+            });
+            let container = null;
+            if (el.containerId) {
+              container = Scene.getScene(el)!.getElement(el.containerId);
+            }
+            redrawTextBoundingBox(element, container, appState);
+            return element;
           }
 
-          return oldElement;
+          return el;
         },
         true,
       ),
@@ -752,16 +628,7 @@ export const actionChangeTextAlign = register({
         value={getFormValue(
           elements,
           appState,
-          (element) => {
-            if (isTextElement(element)) {
-              return element.textAlign;
-            }
-            const boundTextElement = getBoundTextElement(element);
-            if (boundTextElement) {
-              return boundTextElement.textAlign;
-            }
-            return null;
-          },
+          (element) => isTextElement(element) && element.textAlign,
           appState.currentItemTextAlign,
         )}
         onChange={(value) => updateData(value)}

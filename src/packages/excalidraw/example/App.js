@@ -103,24 +103,6 @@ export default function App() {
           >
             Reset Scene
           </button>
-          <button
-            onClick={() => {
-              excalidrawRef.current.updateScene({
-                libraryItems: [
-                  {
-                    status: "published",
-                    elements: initialData.libraryItems[0],
-                  },
-                  {
-                    status: "unpublished",
-                    elements: initialData.libraryItems[1],
-                  },
-                ],
-              });
-            }}
-          >
-            Update Library
-          </button>
           <label>
             <input
               type="checkbox"

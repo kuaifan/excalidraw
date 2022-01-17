@@ -136,6 +136,7 @@ export const MobileMenu = ({
     return (
       <>
         {actionManager.renderAction("clearCanvas")}
+        {actionManager.renderAction("contentSave")}
         {actionManager.renderAction("loadScene")}
         {renderJSONExportDialog()}
         {renderImageExportDialog()}

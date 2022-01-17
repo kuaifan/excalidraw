@@ -1,0 +1,18 @@
+.excalidraw {
+  .m__left{
+    margin-left: 15px;
+  }
+  .ContentSave__fileName {
+    position: absolute;
+    top: 50%;
+    left: 105%;
+    align-items: center;
+    width: 90px;
+    text-align: center;
+    height: 28px;
+    line-height: 28px;
+    background-color: #e9ecef;
+    vertical-align: middle;
+    border-radius: var(--border-radius-lg);
+  }
+}
