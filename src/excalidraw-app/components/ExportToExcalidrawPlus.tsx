@@ -78,29 +78,6 @@ export const ExportToExcalidrawPlus: React.FC<{
   onError: (error: Error) => void;
 }> = ({ elements, appState, files, onError }) => {
   return (
-    <Card color="primary">
-      <div className="Card-icon">{excalidrawPlusIcon}</div>
-      <h2>Excalidraw+</h2>
-      <div className="Card-details">
-        {t("exportDialog.excalidrawplus_description")}
-      </div>
-      <ToolButton
-        className="Card-button"
-        type="button"
-        title={t("exportDialog.excalidrawplus_button")}
-        aria-label={t("exportDialog.excalidrawplus_button")}
-        showAriaLabel={true}
-        onClick={async () => {
-          try {
-            await exportToExcalidrawPlus(elements, appState, files);
-          } catch (error: any) {
-            console.error(error);
-            if (error.name !== "AbortError") {
-              onError(new Error(t("exportDialog.excalidrawplus_exportError")));
-            }
-          }
-        }}
-      />
-    </Card>
+    <span></span>
   );
 };

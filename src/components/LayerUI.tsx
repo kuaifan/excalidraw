@@ -198,11 +198,11 @@ const LayerUI = ({
           <Stack.Row gap={1} justifyContent="space-between">
             {actionManager.renderAction("clearCanvas")}
             {actionManager.renderAction("contentSave")}
-            <Separator />
+            {/*<Separator />*/}
             {actionManager.renderAction("loadScene")}
             {renderJSONExportDialog()}
             {renderImageExportDialog()}
-            <Separator />
+            {/*<Separator />*/}
             {onCollabButtonClick && (
               <CollabButton
                 isCollaborating={isCollaborating}

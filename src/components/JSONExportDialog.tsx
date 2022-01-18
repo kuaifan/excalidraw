@@ -59,23 +59,6 @@ const JSONExportModal = ({
             />
           </Card>
         )}
-        {onExportToBackend && (
-          <Card color="pink">
-            <div className="Card-icon">{link}</div>
-            <h2>{t("exportDialog.link_title")}</h2>
-            <div className="Card-details">{t("exportDialog.link_details")}</div>
-            <ToolButton
-              className="Card-button"
-              type="button"
-              title={t("exportDialog.link_button")}
-              aria-label={t("exportDialog.link_button")}
-              showAriaLabel={true}
-              onClick={() =>
-                onExportToBackend(elements, appState, files, canvas)
-              }
-            />
-          </Card>
-        )}
         {exportOpts.renderCustomUI &&
           exportOpts.renderCustomUI(elements, appState, files, canvas)}
       </div>
@@ -106,6 +89,30 @@ export const JSONExportDialog = ({
 
   return (
     <>
+      <ToolButton
+        onClick={() => {
+          setModalIsShown(true);
+        }}
+        data-testid="json-export-button"
+        icon={exportFile}
+        type="button"
+        aria-label={t("buttons.export")}
+        showAriaLabel={useIsMobile()}
+        title={t("buttons.export")}
+      />
+      {modalIsShown && (
+        <Dialog onCloseRequest={handleClose} small={true} title={t("buttons.export")}>
+          <JSONExportModal
+            elements={elements}
+            appState={appState}
+            files={files}
+            actionManager={actionManager}
+            onCloseRequest={handleClose}
+            exportOpts={exportOpts}
+            canvas={canvas}
+          />
+        </Dialog>
+      )}
     </>
   );
 };

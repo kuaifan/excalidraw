@@ -23,7 +23,6 @@ const ContentSave = ({ onConfirm }: { onConfirm: () => void }) => {
         showAriaLabel={useIsMobile()}
         onClick={toggleDialog}
         data-testid="save-button"
-        className="m__left"
       />
 
       {showDialog && (

@@ -61,8 +61,7 @@
   .ExportDialog--json {
     .ExportDialog-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      justify-items: center;
+      //grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       row-gap: 2em;
 
       @media (max-width: 460px) {

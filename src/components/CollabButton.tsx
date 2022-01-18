@@ -17,21 +17,6 @@ const CollabButton = ({
 }) => {
   return (
     <>
-      <ToolButton
-        className={clsx("CollabButton", {
-          "is-collaborating": isCollaborating,
-        })}
-        onClick={onClick}
-        icon={users}
-        type="button"
-        title={t("labels.liveCollaboration")}
-        aria-label={t("labels.liveCollaboration")}
-        showAriaLabel={useIsMobile()}
-      >
-        {collaboratorCount > 0 && (
-          <div className="CollabButton-collaborators">{collaboratorCount}</div>
-        )}
-      </ToolButton>
     </>
   );
 };
